@@ -8,6 +8,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.PhantomJS;
+using System.Collections.Generic;
 
 namespace LaunchBrowsers
 {
@@ -30,7 +31,9 @@ namespace LaunchBrowsers
                 //options.AddArguments("test-type");
                 options.AddArguments("start-maximized");
                 //options.AddExtension(@"path-to-extension");
-                 
+
+                options.EnableMobileEmulation("Apple iPhone 6");
+
 
                 driver = new ChromeDriver(@"C:\Users\Sagar\Softwares", options);
                 driver.Url = "http://www.softpost.org";

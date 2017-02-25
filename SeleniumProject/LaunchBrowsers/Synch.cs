@@ -20,16 +20,19 @@ namespace SeleniumProject
                 try
                 {
                     driver = new ChromeDriver(@"C:\Users\Sagar\Softwares");
-
-                                   
-                    //Implicit timeout applies to all elements
-                    driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(20));
+                    driver.Manage().Window.Maximize();
+                    driver.Navigate().GoToUrl("http://www.softpost.org/selenium-test-page");
 
                     //Page load timeout specifies the maximum timeout for loading the pages
                     driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(50));
 
 
-                    //Explicit timeout for specific elements based on conditions
+                    //Implicit timeout applies to all elements
+                    driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
+
+
+
+                   //Explicit timeout for specific elements based on conditions
                     WebDriverWait w = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
                     w.IgnoreExceptionTypes(typeof(StaleElementReferenceException), typeof(InvalidElementStateException));
                     w.Until(ExpectedConditions.TitleContains("Selenium"));
@@ -37,16 +40,11 @@ namespace SeleniumProject
                     w.Until(ExpectedConditions.ElementIsVisible(By.Id("fn")));
                     w.Until(ExpectedConditions.ElementToBeClickable(By.Id("fn")));
                     w.Until(ExpectedConditions.UrlContains("softpost"));
-                   // w.Until(ExpectedConditions.AlertIsPresent());
+                    // w.Until(ExpectedConditions.AlertIsPresent());
+                    // w.Until(ExpectedConditions.
 
 
-                    driver.Manage().Window.Maximize();                        
-                    driver.Navigate().GoToUrl("http://www.softpost.org/selenium-test-page");
-
-                    driver.FindElement(By.XPath("//input[@id='fn']")).SendKeys("Donald");
-
-                
-
+                   driver.FindElement(By.XPath("//input[@id='fn']")).SendKeys("Donald");
 
                 }
                 catch (Exception e)

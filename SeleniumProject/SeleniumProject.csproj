@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frameworks\SeleniumGrid.cs" />
+    <Compile Include="Frameworks\ScreenshotDemo.cs" />
     <Compile Include="Frameworks\PageObjects.cs" />
     <Compile Include="Frameworks\MsTest.cs" />
     <Compile Include="Frameworks\Pages\BasePage.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Frameworks\Variables.cs" />
     <Compile Include="LaunchBrowsers\Exceptions.cs" />
     <Compile Include="LaunchBrowsers\Contexts.cs" />
+    <Compile Include="LaunchBrowsers\UploadDownload.cs" />
     <Compile Include="LaunchBrowsers\JavaScriptExecutor.cs" />
     <Compile Include="LaunchBrowsers\Interactions.cs" />
     <Compile Include="LaunchBrowsers\ComplexActions.cs" />

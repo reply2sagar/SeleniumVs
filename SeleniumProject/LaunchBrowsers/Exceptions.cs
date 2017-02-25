@@ -18,38 +18,31 @@ namespace SeleniumProject
 
 
                 IWebDriver driver = null;
-                try
-                {
+               
                     driver = new ChromeDriver(@"C:\Users\Sagar\Softwares");
                     driver.Url = "http://www.softpost.org";
                     driver.Manage().Window.Maximize();
                     
                     driver.Navigate().GoToUrl("http://www.softpost.org");
 
-                    //NoSuchElementException
-                    driver.FindElement(By.Id("ssdsd"));
+                //NoSuchElementException
+                 //driver.FindElement(By.Id("sss"));
 
-                    //ElementNotVisibleException
+                //ElementNotVisibleException
 
-                    //NoSuchFrameException
+                //NoSuchFrameException
+                //driver.SwitchTo().Frame("xyz");
 
-                    //NoSuchWindowException
+                //NoSuchWindowException
 
-                    //InvalidSelectorException
+                //InvalidSelectorException
+                driver.FindElement(By.XPath("sss]"));
 
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Exception ....*********" + e.ToString());
-                }
-
-                finally
-                {
-                    Thread.Sleep(2000);
+                Thread.Sleep(2000);
                     driver.Close();
                     driver.Quit();
-
-                }
+                          
+                
             }
         }
     }

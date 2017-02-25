@@ -55,7 +55,7 @@ namespace SeleniumProject.Frameworks
 
         private string getRandomStrings(int length)
         {
-            const string charSet = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+            const string charSet = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz*";
             char[] myString = new char[length];
             Random random = new Random();
 

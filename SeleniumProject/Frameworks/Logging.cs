@@ -16,6 +16,7 @@ namespace SeleniumProject.Frameworks
         {
            
             log.Info("Understanding logging framework");
+            log.Warn("Warning");
             //Application settings
             Console.WriteLine("Browser name is -> " + Settings1.Default["browser"]);
 

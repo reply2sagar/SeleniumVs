@@ -34,13 +34,16 @@ namespace SeleniumProject
                     actions.MoveToElement(firstName).Build().Perform();
 
                     //drag and drop
-                    actions.DragAndDrop(firstName,city).Build().Perform();
+                    //actions.DragAndDrop(firstName,city).Build().Perform();
 
                     //double click an element
                     actions.DoubleClick(firstName).Build().Perform();
 
                     //context click an element
                     actions.ContextClick(firstName).Build().Perform();
+                    Thread.Sleep(2000);
+
+                    //actions.ClickAndHold(firstName).MoveToElement(city).Release().Build().Perform();
                     
 
 

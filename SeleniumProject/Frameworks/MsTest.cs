@@ -6,13 +6,37 @@ using System.Threading;
 
 namespace SeleniumProject.Frameworks
 {
+
+
     [TestClass]
     public class MsTest
     {
+        IWebDriver driver = null;
+
+        //[ClassCleanup]
+        [TestCleanup]
+        public void testClean()
+        {       
+                Thread.Sleep(2000);
+                driver.Close();
+                driver.Quit();
+        }
+
+
+        //[ClassInitialize]
+        [TestInitialize]
+        public void testInit()
+        {
+            driver = new ChromeDriver(@"C:\Users\Sagar\Softwares");
+            driver.Manage().Window.Maximize();
+
+        }
+
+        
 
         [TestMethod]
         [TestCategory("sanity")]
-        [Ignore()]
+       
         public void TestMethod1()
         {
 //            MSTest location
@@ -33,39 +57,35 @@ namespace SeleniumProject.Frameworks
 //      / test:"ns.TestClass"
 
 
-            IWebDriver driver = null;
+          
             try
             {
-                driver = new ChromeDriver(@"C:\Users\Sagar\Softwares");
-                driver.Manage().Window.Maximize();
                 driver.Navigate().GoToUrl("http://www.softpost.org/selenium-test-page");
 
                 IWebElement firstName = driver.FindElement(By.XPath("//input[@id='fn']"));
 
                 firstName.SendKeys("Donald");
-
-               
                 firstName.SendKeys(Keys.Enter);
 
                 //doing assertions
                 Assert.AreEqual("Donald",firstName.GetAttribute("value"));
-
-
-
-
+                
             }
             catch (Exception e)
             {
                 Console.WriteLine("Exception ....*********" + e.ToString());
             }
 
-            finally
-            {
-                Thread.Sleep(2000);
-                driver.Close();
-                driver.Quit();
-
-            }
+           
         }
+
+
+        [Ignore()]
+        [TestMethod]
+        public void TestMethod2()
+        {
+            Console.WriteLine("Test Method 2");
+        }
+
     }
 }

@@ -31,9 +31,9 @@ namespace SeleniumProject
                     IWebElement firstName = driver.FindElement(By.XPath("//input[@id='fn']"));
                     ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].value='Shaun';", firstName);
 
-                    //Setting data in edit box
+                    //scrolling to specific element
                     IWebElement cucumber = driver.FindElement(By.PartialLinkText("Cucumber"));
-                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView();;", cucumber);
+                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView();", cucumber);
 
 
                     //Firing the change event
