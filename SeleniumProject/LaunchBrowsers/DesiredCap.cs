@@ -9,23 +9,32 @@ using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.PhantomJS;
 
-namespace SeleniumProject
+namespace LaunchBrowsers
 {
     [TestClass]
-    public class UnitTest1
+    public class DesiredCap
     {
 
         [TestMethod]
-        public void TestChrome()
+        public void TestChromeCap()
         {
 
-          
             IWebDriver driver = null;
             try
             {
-                driver = new ChromeDriver(@"C:\Users\Sagar\Softwares");
+                ChromeOptions options = new ChromeOptions();
+                // options.BinaryLocation = @"C:\Users\Sagar\Softwares\chrome.exe";
+                //to get chrome details use -> chrome://version in address bar
+                //options.AddArguments("user-data-dir=C:\\Users\\Sagar\\AppData\\Local\\Google\\Chrome\\User Data\\Default");
+                //options.AddArguments("disable-popup-blocking");
+                //options.AddArguments("test-type");
+                options.AddArguments("start-maximized");
+                //options.AddExtension(@"path-to-extension");
+                 
+
+                driver = new ChromeDriver(@"C:\Users\Sagar\Softwares", options);
                 driver.Url = "http://www.softpost.org";
-                driver.Manage().Window.Maximize();
+                //driver.Manage().Window.Maximize();
                 driver.Navigate();
             }
             catch (Exception e)
@@ -38,17 +47,57 @@ namespace SeleniumProject
                 Thread.Sleep(2000);
                 driver.Close();
                 driver.Quit();
-             
+
             }
         }
+
+        [TestMethod]
+        public void TestFirefoxCap()
+        {
+
+            IWebDriver driver = null;
+            try
+            {
+                FirefoxOptions options = new FirefoxOptions();
+                options.LogLevel = FirefoxDriverLogLevel.Info;
+                // options.Profile = new FirefoxProfile("profile-name");
+                options.UseLegacyImplementation = false;
+                driver = new FirefoxDriver(options);
+                
+               
+                driver.Url = "http://www.softpost.org";
+                driver.Manage().Window.Maximize();
+                driver.Navigate();
+                Console.WriteLine("Success");
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception ....*********" + e.ToString());
+            }
+
+            finally
+            {
+                Thread.Sleep(2000);
+                driver.Close();
+                driver.Quit();
+
+            }
+
+        }
+
+
 
         [TestMethod]
         public void TestIE()
         {
 
-            
-            
             IWebDriver driver = null;
+            InternetExplorerOptions options = new InternetExplorerOptions();
+            
+            options.EnableFullPageScreenshot = true;
+            options.EnsureCleanSession = true;
+
             try
             {
                 driver = new InternetExplorerDriver(@"C:\Users\Sagar\Softwares");
@@ -66,34 +115,7 @@ namespace SeleniumProject
                 Thread.Sleep(2000);
                 driver.Close();
                 driver.Quit();
-              
-            }
 
-        }
-
-
-        [TestMethod]
-        public void TestFirefox()
-        {
-       
-            IWebDriver driver = null;
-            try
-            {
-                 driver = new FirefoxDriver();             
-                driver.Url = "http://www.softpost.org";
-                driver.Manage().Window.Maximize();
-                driver.Navigate();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Exception ....*********" + e.ToString());
-            }
-
-            finally
-            {
-                Thread.Sleep(2000);
-                driver.Close();
-                driver.Quit();              
             }
 
         }
@@ -107,6 +129,8 @@ namespace SeleniumProject
             IWebDriver driver = null;
             try
             {
+                SafariOptions options = new SafariOptions();
+                
                 driver = new SafariDriver();
                 driver.Url = "http://www.softpost.org";
                 driver.Manage().Window.Maximize();
@@ -136,6 +160,9 @@ namespace SeleniumProject
             IWebDriver driver = null;
             try
             {
+                EdgeOptions options = new EdgeOptions();
+                options.PageLoadStrategy = EdgePageLoadStrategy.Default;
+                
                 driver = new EdgeDriver();
                 driver.Url = "http://www.softpost.org";
                 driver.Manage().Window.Maximize();
@@ -165,6 +192,8 @@ namespace SeleniumProject
             IWebDriver driver = null;
             try
             {
+                PhantomJSOptions options = new PhantomJSOptions();
+                
                 driver = new PhantomJSDriver();
                 driver.Url = "http://www.softpost.org";
                 driver.Manage().Window.Maximize();
@@ -183,11 +212,9 @@ namespace SeleniumProject
                 driver.Close();
                 driver.Quit();
             }
-
         }
 
-    }
 
-     
+        }
     }
 

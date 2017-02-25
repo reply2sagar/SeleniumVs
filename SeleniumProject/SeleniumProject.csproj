@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.7\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.0.8-rc2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -45,8 +48,10 @@
       <HintPath>..\packages\MSTest.TestFramework.1.0.8-rc2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="WebDriver, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.0.1\lib\net40\WebDriver.dll</HintPath>
     </Reference>
@@ -55,11 +60,39 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LaunchBrowsers\UnitTest1.cs" />
+    <Compile Include="Frameworks\PageObjects.cs" />
+    <Compile Include="Frameworks\MsTest.cs" />
+    <Compile Include="Frameworks\Pages\BasePage.cs" />
+    <Compile Include="Frameworks\Pages\TestPage.cs" />
+    <Compile Include="Frameworks\Pages\HomePage.cs" />
+    <Compile Include="Frameworks\Utilities.cs" />
+    <Compile Include="Frameworks\Logging.cs" />
+    <Compile Include="Frameworks\Variables.cs" />
+    <Compile Include="LaunchBrowsers\Exceptions.cs" />
+    <Compile Include="LaunchBrowsers\Contexts.cs" />
+    <Compile Include="LaunchBrowsers\JavaScriptExecutor.cs" />
+    <Compile Include="LaunchBrowsers\Interactions.cs" />
+    <Compile Include="LaunchBrowsers\ComplexActions.cs" />
+    <Compile Include="LaunchBrowsers\Synch.cs" />
+    <Compile Include="LaunchBrowsers\XpathCssTest.cs" />
+    <Compile Include="LaunchBrowsers\ElementLocators.cs" />
+    <Compile Include="LaunchBrowsers\DesiredCap.cs" />
+    <Compile Include="LaunchBrowsers\BasicAutomation.cs" />
+    <Compile Include="LaunchBrowsers\LaunchBrowsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -71,4 +104,8 @@
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.1.10-rc2\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.1.10-rc2\build\net45\MSTest.TestAdapter.targets'))" />
   </Target>
   <Import Project="..\packages\MSTest.TestAdapter.1.1.10-rc2\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.1.10-rc2\build\net45\MSTest.TestAdapter.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
