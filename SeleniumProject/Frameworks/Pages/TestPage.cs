@@ -20,15 +20,12 @@ namespace SeleniumProject.Frameworks.Pages
             IWebElement firstName = driver.FindElement(By.XPath("//input[@id='fn']"));
 
             firstName.SendKeys(v);
-
-
             firstName.SendKeys(Keys.Enter);
         }
 
         public String getName()
         {
             return driver.FindElement(By.XPath("//input[@id='fn']")).GetAttribute("value");
-
         }
     }
 }
