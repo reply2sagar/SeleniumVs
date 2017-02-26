@@ -18,7 +18,6 @@ namespace SeleniumProject.Frameworks.Pages
         public void setName(string v)
         {
             IWebElement firstName = driver.FindElement(By.XPath("//input[@id='fn']"));
-
             firstName.SendKeys(v);
             firstName.SendKeys(Keys.Enter);
         }
